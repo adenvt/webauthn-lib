@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Process Register Can procress register (Android Keystore) 1`] = `
+Object {
+  "counter": 0,
+  "credentialId": "AVUvAmX241vMKYd7ZBdmkNWaYcNYhoSZCJjFRGmROb6I4ygQUVmH6k9IMwcbZGeAQ4v4WMNphORudwje5h7ty9A",
+  "fmt": "android-key",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEOEmiD94mw0sAiDkaWCd4Pf+TiAsW
+VAiKrfr1eiWVSaF0PEtSRc8mhc+RBUNnzU+vuUhOcFk2UQEfwNzOdiHGjw==
+-----END PUBLIC KEY-----",
+}
+`;
+
+exports[`Process Register Can procress register (Android SafetyNet) 1`] = `
+Object {
+  "counter": 0,
+  "credentialId": "AZD7huwZVx7aW1efRa6Uq3JTQNorj3qA9yrLINXEcgvCQYtWiSQa1eOIVrXfCmip6MzP8KaITOvRLjy3TUHO7_c",
+  "fmt": "android-safetynet",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEVRFkpSXqy20bqXLwWlwOQqqadQWu
+Oh2Ux/naoJnjAmGJc2Cz12lWr8W6WeBumSVieocFvzYIigB6UjS/AcH/3Q==
+-----END PUBLIC KEY-----",
+}
+`;
+
+exports[`Process Register Can procress register (Fido U2F) 1`] = `
+Object {
+  "counter": 0,
+  "credentialId": "vZMrqL__-tEDzaXG5tbVFU5JoxtMt6AnPs_OcaZoWM8",
+  "fmt": "fido-u2f",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEAUEWkmz5r7rVHhypZS6zepJKCYud
+Kj3+MEkMvg7ud9Y8Vd7g1HNPVoLBr4Nu6eXzhiEcbVIIKZCuvNcd3xJ+uA==
+-----END PUBLIC KEY-----",
+}
+`;
+
+exports[`Process Register Can procress register (None) 1`] = `
+Object {
+  "counter": 1,
+  "credentialId": "Y4s-fgVIXbT7NqvHa1sLMd7T7ErhZn_qF4wa2Yc-Uj4",
+  "fmt": "none",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAErtJAmExf4K22LwBG1rr/HNnvIkbV
+9bGGzouNSzRFbQIpCGhlsNp6jzkvjgVUNIdzYmeUEiAl7qvsr8xo06NM8A==
+-----END PUBLIC KEY-----",
+}
+`;
+
+exports[`Process Register Can procress register (Packed Self) 1`] = `
+Object {
+  "counter": 1588518702,
+  "credentialId": "AVy8L1mh_mYMfCGXswa7i-_315bodaSU6zg2PgjtVi0PSTRFjYb2LeCKDJgBmowrp9gFh2U8Jr8",
+  "fmt": "packed",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEz0WYd0ZW3WzseKb5FpX9KsFFa26h
+8ESuUGKNgkqzrOxkGU6UGwquODUd2gmgYmxi0/WWYmu0bF6zPWi2TIrLLQ==
+-----END PUBLIC KEY-----",
+}
+`;
+
+exports[`Process Register Can procress register (Packed X5C) 1`] = `
+Object {
+  "counter": 1,
+  "credentialId": "_gNdytJYMISijHUYVOu5PKM3Xo41sK4jL_6i2iNMOC8",
+  "fmt": "packed",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAECNpVRRFyPBtwi3g0T5f68Ko84nkK
+7jyKdO/czIlzbcakbqKbhn2wZAMwd2rlAS15yUCzP6yfRJ+9WM6GW2qDMg==
+-----END PUBLIC KEY-----",
+}
+`;

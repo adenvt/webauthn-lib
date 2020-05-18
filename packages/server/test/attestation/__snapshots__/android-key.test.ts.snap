@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Verify Android Key 1`] = `
+Object {
+  "counter": 0,
+  "credentialId": "AVUvAmX241vMKYd7ZBdmkNWaYcNYhoSZCJjFRGmROb6I4ygQUVmH6k9IMwcbZGeAQ4v4WMNphORudwje5h7ty9A",
+  "fmt": "android-key",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEOEmiD94mw0sAiDkaWCd4Pf+TiAsW
+VAiKrfr1eiWVSaF0PEtSRc8mhc+RBUNnzU+vuUhOcFk2UQEfwNzOdiHGjw==
+-----END PUBLIC KEY-----",
+}
+`;

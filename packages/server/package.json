@@ -1,0 +1,34 @@
+{
+  "name": "@webauthn-lib/server",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/webauthn.js",
+  "types": "dist/webauthn.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "webauthn",
+    "fido",
+    "fido-u2f",
+    "library",
+    "fido-lib"
+  ],
+  "files": [
+    "dist/"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fidm/x509": "^1.2.1",
+    "@lapo/asn1js": "^1.1.0",
+    "base64url": "^3.0.1",
+    "cbor": "^5.0.2",
+    "cose-to-jwk": "^1.1.0",
+    "eckles": "^1.4.1",
+    "is-url": "^1.2.4",
+    "rasha": "^1.2.5"
+  }
+}

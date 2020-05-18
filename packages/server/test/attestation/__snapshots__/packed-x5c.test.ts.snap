@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Verify Packed (x5c) 1`] = `
+Object {
+  "counter": 1,
+  "credentialId": "_gNdytJYMISijHUYVOu5PKM3Xo41sK4jL_6i2iNMOC8",
+  "fmt": "packed",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAECNpVRRFyPBtwi3g0T5f68Ko84nkK
+7jyKdO/czIlzbcakbqKbhn2wZAMwd2rlAS15yUCzP6yfRJ+9WM6GW2qDMg==
+-----END PUBLIC KEY-----",
+}
+`;

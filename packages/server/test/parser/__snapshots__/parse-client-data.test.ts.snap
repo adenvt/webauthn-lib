@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parsing Assertion Client Data 1`] = `
+Object {
+  "challenge": "fgqnwaiAcwNtHB48dSdU__sk7VNSo41fkPHGuM-W_pI",
+  "origin": "https://webauthn.io",
+  "type": "webauthn.get",
+}
+`;
+
+exports[`Parsing Attestation Client Data 1`] = `
+Object {
+  "challenge": "7LhOEoxKASIyXaOY7_cGDxnE3PDD4pB4elK7PVh9s2Q",
+  "origin": "https://webauthn.io",
+  "type": "webauthn.create",
+}
+`;

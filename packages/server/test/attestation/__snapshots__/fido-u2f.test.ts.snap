@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Verify FidoU2F 1`] = `
+Object {
+  "counter": 0,
+  "credentialId": "PTCnTJ9dsa3pZ7nnJe0GdziRPsQV7gQdKDJYevMytoQ",
+  "fmt": "fido-u2f",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8ZFjAHxqLjmi+yQnF4c73Q35OSh4
+Ju/z7cwBG3sVC0hcJ6v6J02lpVEH+BlI2ggd96Z7J3UldA5F3DQyzyOkUQ==
+-----END PUBLIC KEY-----",
+}
+`;
