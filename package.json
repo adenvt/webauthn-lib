@@ -30,15 +30,13 @@
     "lerna": "^3.20.2",
     "lint-staged": "^10.2.2",
     "typedoc": "^0.17.6",
-    "typescript": "^3.8.3"
-  },
-  "dependencies": {
-    "@webauthn-lib/server": "file:packages/server"
+    "typescript": "^3.9.2",
+    "webpack": "^4.43.0"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap --hoist",
-    "pretest": "npm run lint",
-    "test": "jest --coverage",
+    "build": "lerna run build",
+    "test": "jest",
     "lint": "eslint --ext js,ts --ignore-path .gitignore .",
     "fix": "eslint --ext js,ts --ignore-path .gitignore . --fix"
   },

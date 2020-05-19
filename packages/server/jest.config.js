@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
+// const { pathsToModuleNameMapper } = require('ts-jest/utils')
+// const { compilerOptions }         = require('./tsconfig.json')
 
 module.exports = {
   // All imported modules in your tests should be mocked automatically
@@ -7,6 +10,9 @@ module.exports = {
 
   // Stop running tests after `n` failures
   // bail: 0,
+
+  // Respect "browser" field in package.json when resolving modules
+  // browser: false,
 
   // The directory where Jest should store its cached dependency information
   // cacheDirectory: "/tmp/jest_rs",
@@ -77,7 +83,7 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  // moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -89,13 +95,13 @@ module.exports = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  // preset: 'ts-jest',
 
   // Run tests from one or more projects
-  projects: ['<rootDir>/packages/*/jest.config.js'],
+  // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  // reporters: undefined,
+  // reporters: ['jest-progress-bar-reporter'],
 
   // Automatically reset mock state between every test
   // resetMocks: false,
@@ -130,7 +136,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  // testEnvironment: 'node',
+  testEnvironment: 'node',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -139,10 +145,7 @@ module.exports = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  // testMatch: [
-  //   "**/__tests__/**/*.[jt]s?(x)",
-  //   "**/?(*.)+(spec|test).[tj]s?(x)"
-  // ],
+  // testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
