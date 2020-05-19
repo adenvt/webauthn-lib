@@ -73,7 +73,7 @@ export type RegistrationRequest = ResponseCredential<AuthenticatorAttestationRes
 export type LoginRequest = ResponseCredential<AuthenticatorAssertionResponse>
 
 export interface UserPubKey {
-  readonly fmt: AttestationFormat;
+  readonly fmt?: AttestationFormat;
   readonly publicKey: string;
   readonly counter: number;
   readonly credentialId: string;
