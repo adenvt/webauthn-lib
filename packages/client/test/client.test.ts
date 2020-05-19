@@ -1,4 +1,5 @@
 import Webuauthn from '../src/client'
+import sample from './__sample__/challenge'
 
 describe('Process register challenge', () => {
   test('Can process register challenge & user.id into Uint8Array', () => {
@@ -35,6 +36,22 @@ describe('Process register challenge', () => {
     Webuauthn.processRegister(challenge)
 
     expect(navigator.credentials.create).toBeCalledWith(output)
+  })
+
+  test('Throw error when response is undefined', () => {
+    // @ts-ignore
+    const result = Webuauthn.processRegister()
+
+    expect(result).toBeInstanceOf(Promise)
+    expect(result).rejects.toThrowError('Response body is not valid webauthn registration challenge')
+  })
+
+  test('Throw error when response is wrong', () => {
+    // @ts-ignore
+    const result = Webuauthn.processRegister(sample.loginChallenge)
+
+    expect(result).toBeInstanceOf(Promise)
+    expect(result).rejects.toThrowError('Response body is not valid webauthn registration challenge')
   })
 })
 
@@ -101,5 +118,21 @@ describe('Process login challenge', () => {
     Webuauthn.processLogin(challenge)
 
     expect(navigator.credentials.get).toBeCalledWith(output)
+  })
+
+  test('Throw error when response is undefined', () => {
+    // @ts-ignore
+    const result = Webuauthn.processLogin()
+
+    expect(result).toBeInstanceOf(Promise)
+    expect(result).rejects.toThrowError('Response body is not valid webauthn login challenge')
+  })
+
+  test('Throw error when response is wrong', () => {
+    // @ts-ignore
+    const result = Webuauthn.processLogin(sample.registerChallenge)
+
+    expect(result).toBeInstanceOf(Promise)
+    expect(result).rejects.toThrowError('Response body is not valid webauthn login challenge')
   })
 })

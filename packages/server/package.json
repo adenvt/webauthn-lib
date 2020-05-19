@@ -17,9 +17,24 @@
     "fido-lib"
   ],
   "files": [
-    "dist/"
+    "dist/",
+    "cert/"
   ],
-  "author": "",
+  "author": {
+    "name": "Ade Novid",
+    "email": "adenvt@gmail.com",
+    "url": "https://adenov.id"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adenvt/webauthn-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adenvt/webauthn-lib/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "@fidm/x509": "^1.2.1",

@@ -1,17 +1,17 @@
-/**
- * Convert base64 to Uint8Array
- * @param base64 Base64 encoded string
- * @internal
- */
-function toUint8 (base64: string): Uint8Array {
-  return Uint8Array.from(window.atob(base64), (c) => c.charCodeAt(0))
-}
+import {
+  toUint8,
+  validateRegisterChallenge,
+  validateLoginChallenge,
+} from './utils'
 
 /**
  * Process register challenge
  * @param body Challenge response from server
  */
 function processRegister (body: any): Promise<Credential | null> {
+  if (!validateRegisterChallenge(body))
+    return Promise.reject(new Error('Response body is not valid webauthn registration challenge'))
+
   const options = {
     ...body,
     challenge: toUint8(body.challenge),
@@ -29,6 +29,9 @@ function processRegister (body: any): Promise<Credential | null> {
  * @param body Challenge response from server
  */
 function processLogin (body: any): Promise<Credential | null> {
+  if (!validateLoginChallenge(body))
+    return Promise.reject(new Error('Response body is not valid webauthn login challenge'))
+
   const options = {
     ...body,
     challenge: toUint8(body.challenge),
