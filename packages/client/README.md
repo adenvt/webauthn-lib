@@ -1,4 +1,4 @@
-# `@webauthn-lib/client`
+# @webauthn-lib/client
 
 > TODO: description
 

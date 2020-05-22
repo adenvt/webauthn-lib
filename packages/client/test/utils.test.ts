@@ -6,7 +6,7 @@ import {
 } from '../src/utils'
 
 describe('Convert to Uint8Array', () => {
-  test('Can conver to Uint8Array', () => {
+  test('Can convert base64 to Uint8Array', () => {
     const input  = 'SGVsbG8gV29ybGQ='
     const sample = toUint8(input)
 

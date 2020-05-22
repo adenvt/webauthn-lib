@@ -6,18 +6,17 @@
 
 ## Introduction
 
-The Web Authentication API (also known as WebAuthn) is a specification written by the W3C and FIDO, with the participation of Google, Mozilla, Microsoft, Yubico, and others. The API allows servers to register and authenticate users using public key cryptography instead of a password.
-
-
-This library provide functionality for implementing WebAuthn Server (*Relying Party*).
+The Web Authentication API (also known as WebAuthn) is a [specification](https://www.w3.org/TR/webauthn/) written by the [W3C](https://www.w3.org/) and [FIDO](https://fidoalliance.org/), with the participation of Google, Mozilla, Microsoft, Yubico, and others. The API allows servers to register and authenticate users using public key cryptography instead of a password.
 
 For a more thorough introduction see:
   - [Guide to Web Authentication](https://webauthn.guide/) by Duo
   - [What is WebAuthn?](https://www.yubico.com/authentication-standards/webauthn/) by Yubico
 
+This is library provide main functionality for implementing Webauthn Server. It not provide any Web Server, User Management or Database connection.
+
 ## Installation
 
-```
+```sh
 npm install @webauthn-lib/client
 npm install @webauthn-lib/server
 ```
@@ -25,9 +24,9 @@ npm install @webauthn-lib/server
 TODO: Example project
 
 ## Usage
-This library contains 2 packages, for Server-side and Client-side
+This library contains 2 packages, for [Server-side](#server-side) and [Client-side](#client-side)
 
-### on Server-side
+### Server-side
 
 #### Initiation
 ```js
@@ -101,7 +100,6 @@ if (user) {
 const body      = req.body // response from client
 const challenge = req.session.challenge
 
-
 try {
   const username   = req.body.username
   const user       = UserModel.findOne({ where: { username }})
@@ -134,7 +132,7 @@ try {
 }
 ```
 
-### on Client-side
+### Client-side
 
 #### Process registration challenge
 
@@ -155,3 +153,18 @@ WebAuthnClient.processLogin(challenge)
   .then((credential) => {
     // send "credential" to server
   })
+```
+
+## Attestation Statement Format
+
+| Format            |      Support       |
+|-------------------|:------------------:|
+| Fido U2F          | :heavy_check_mark: |
+| Android Key       | :heavy_check_mark: |
+| Android SafetyNet | :heavy_check_mark: |
+| Packed (X5C)      | :heavy_check_mark: |
+| Packed (Self)     | :heavy_check_mark: |
+| Packed (ECDAA)    |        :x:         |
+| TPM (X5C)         |        :x:         |
+| TPM (ECDAA)       |        :x:         |
+| None              | :heavy_check_mark: |
