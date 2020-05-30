@@ -2,6 +2,8 @@ import path from 'path'
 import typescript from 'rollup-plugin-typescript2'
 import { terser } from 'rollup-plugin-terser'
 import babel from '@rollup/plugin-babel'
+import resolve from '@rollup/plugin-node-resolve'
+import cjs from '@rollup/plugin-commonjs'
 import package_ from './package.json'
 
 export default {
@@ -24,8 +26,18 @@ export default {
     },
   ],
   plugins: [
-    // eslint-disable-next-line array-element-newline
     typescript({ tsconfig: path.resolve(__dirname, './tsconfig.json') }),
-    babel({ babelHelpers: 'runtime', extensions: ['.js', '.ts'] }),
+    // globals(),
+    // auto(),
+    resolve(),
+    cjs({
+      include     : /node_modules/,
+      namedExports: { 'node_modules/js-base64/base64.js': ['Base64'] },
+    }),
+    babel({
+      babelHelpers      : 'runtime',
+      skipPreflightCheck: true,
+      extensions        : ['.js', '.ts'],
+    }),
   ],
 }

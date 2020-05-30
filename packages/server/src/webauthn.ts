@@ -57,7 +57,10 @@ export default class Webauthn {
     /**
      * Verify that the value of C.challenge equals the base64url encoding of options.challenge
      */
-    if (clientData.challenge !== challenge)
+    const clientChallenge = base64url.toBuffer(clientData.challenge)
+    const expectChallgene = base64url.toBuffer(challenge)
+
+    if (!clientChallenge.equals(expectChallgene))
       throw new Error('clientDataJSON.challenge not match with expected challenge')
 
     /**

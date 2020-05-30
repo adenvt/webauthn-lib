@@ -1,13 +1,7 @@
-import { LoginChallenge, RegistrationChallenge } from '@webauthn-lib/server/dist/typed/webauthn'
-
-/**
- * Convert base64 to Uint8Array
- * @param base64 Base64 encoded string
- * @internal
- */
-export function toUint8 (base64: string): Uint8Array {
-  return Uint8Array.from(window.atob(base64), (c) => c.charCodeAt(0))
-}
+import {
+  LoginChallenge,
+  RegistrationChallenge,
+} from '@webauthn-lib/server/dist/typed/webauthn'
 
 /**
  * Validate response is valid Register Challenge

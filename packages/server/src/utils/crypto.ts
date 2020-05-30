@@ -3,13 +3,14 @@ import { Certificate } from '@fidm/x509'
 import Rasha from 'rasha'
 import Eckles from 'eckles'
 import COSEtoJWK from 'cose-to-jwk'
+import base64url from 'base64url'
 
 /**
  * Create random bytes challenge
  * @param size size in bytes
  */
 export function createChallenge (size = 32): string {
-  return crypto.randomBytes(size).toString('base64')
+  return base64url.encode(crypto.randomBytes(size))
 }
 
 /**

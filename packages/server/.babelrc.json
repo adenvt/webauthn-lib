@@ -2,8 +2,10 @@
   "presets": [
     ["@babel/preset-env", {
       "targets": {
-        "node": "current"
+        "node": 10
       }
-    }], "@babel/preset-typescript"
-  ]
+    }],
+    "@babel/preset-typescript"
+  ],
+  "plugins": ["add-module-exports"]
 }
