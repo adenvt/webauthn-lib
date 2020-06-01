@@ -9,6 +9,7 @@ async function sendPOST (url, data) {
     body       : JSON.stringify(data),
     credentials: 'include',
   })
+
   if (!response.ok)
     throw new Error(response.statusText)
 
@@ -44,6 +45,14 @@ function doLogin () {
       return sendPOST('/login', credential)
     })
     .then((response) => {
+      const container = document.querySelector('#credential')
+
+      container.classList.remove('hide')
+      container.classList.add('show')
+
+      container.querySelector('#cred-id').textContent = response.data.credentialId
+      container.querySelector('#pub-key').textContent = response.data.publicKey
+
       window.alert(response.message)
     })
     .catch((error) => {

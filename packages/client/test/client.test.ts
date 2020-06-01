@@ -33,8 +33,9 @@ describe('Process register challenge', () => {
       },
     })
 
-    Webuauthn.processRegister(challenge)
+    const result = Webuauthn.processRegister(challenge)
 
+    expect(result).toBeInstanceOf(Promise)
     expect(navigator.credentials.create).toBeCalledWith(output)
   })
 
@@ -71,8 +72,9 @@ describe('Process login challenge', () => {
       },
     })
 
-    Webuauthn.processLogin(challenge)
+    const result = Webuauthn.processLogin(challenge)
 
+    expect(result).toBeInstanceOf(Promise)
     expect(navigator.credentials.get).toBeCalledWith(output)
   })
 
@@ -115,8 +117,9 @@ describe('Process login challenge', () => {
       },
     })
 
-    Webuauthn.processLogin(challenge)
+    const result = Webuauthn.processLogin(challenge)
 
+    expect(result).toBeInstanceOf(Promise)
     expect(navigator.credentials.get).toBeCalledWith(output)
   })
 

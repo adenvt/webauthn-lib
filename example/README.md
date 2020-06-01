@@ -1,11 +1,13 @@
-# `example`
+# Webauthn Lib Example
 
-> TODO: description
+> Example webauthn lib using express
 
 ## Usage
 
-```
-const example = require('example');
+```bash
+npm install
 
-// TODO: DEMONSTRATE API
+npm run start
 ```
+
+goto http://localhost:3000

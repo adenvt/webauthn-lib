@@ -5,9 +5,9 @@
 // Overcomes error from jest internals.. this thing: https://github.com/facebook/jest/issues/6248
 'use strict'
 
-const NodeEnvironment = require('jest-environment-jsdom')
+const Environment = require('jest-environment-jsdom')
 
-class MyEnvironment extends NodeEnvironment {
+class WebEnvironment extends Environment {
   constructor (config) {
     super(
       Object.assign({}, config, {
@@ -25,4 +25,4 @@ class MyEnvironment extends NodeEnvironment {
   // async teardown () {}
 }
 
-module.exports = MyEnvironment
+module.exports = WebEnvironment

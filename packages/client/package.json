@@ -34,6 +34,8 @@
   "scripts": {
     "test": "jest",
     "build": "rollup -c",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
     "prepublish": "npm run build"
   },
   "bugs": {
