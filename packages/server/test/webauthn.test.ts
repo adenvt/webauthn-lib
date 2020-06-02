@@ -9,16 +9,7 @@ import packedSelfResponse from './__sample__/packed-self.json'
 import tpmX5CResponse from './__sample__/tpm-x5c.json'
 import { UserPubKey, LoginOptions } from '../src/typed/webauthn'
 
-jest.mock('../src/utils/crypto', () => {
-  const originalModule = jest.requireActual('../src/utils/crypto')
-
-  return {
-    ...originalModule,
-    createChallenge: jest.fn().mockImplementation((size = 32) => {
-      return Buffer.alloc(size, 'a').toString('base64')
-    }),
-  }
-})
+jest.mock('../src/utils/crypto')
 
 describe('Webauthn instance', () => {
   test('construtor', () => {
@@ -27,6 +18,31 @@ describe('Webauthn instance', () => {
     expect(instance).toBeInstanceOf(WebAuthn)
     // @ts-ignore
     expect(instance.rp.id).toBe('localhost')
+  })
+
+  test('construtor with User Verification true', () => {
+    const instance = new WebAuthn({ rpOrigin: 'http://localhost', userVerification: true })
+
+    expect(instance).toBeInstanceOf(WebAuthn)
+    // @ts-ignore
+    expect(instance.uv).toBe('required')
+  })
+
+  test('construtor with User Verification string', () => {
+    const instance = new WebAuthn({ rpOrigin: 'http://localhost', userVerification: 'preferred' })
+
+    expect(instance).toBeInstanceOf(WebAuthn)
+    // @ts-ignore
+    expect(instance.uv).toBe('preferred')
+  })
+
+  test('construtor with wrong User Verification ', () => {
+    // @ts-ignore
+    const instance = new WebAuthn({ rpOrigin: 'http://localhost', userVerification: 'coblagi' })
+
+    expect(instance).toBeInstanceOf(WebAuthn)
+    // @ts-ignore
+    expect(instance.uv).toBe('discouraged')
   })
 
   test('construtor without parameter', () => {
@@ -60,17 +76,43 @@ describe('Create Register Challenge', () => {
     const webauthn          = new WebAuthn({ rpOrigin: 'https://webauthn.io' })
     const challengeResponse = webauthn.newRegister({ user: { id: 'adenvt@gmail.com', name: 'Ade Novid' } })
     const expectedResponse  = {
-      challenge: 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+      challenge: 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
       rp       : { id: 'webauthn.io', name: 'webauthn.io' },
       user     : {
-        id         : 'YWRlbnZ0QGdtYWlsLmNvbQ==',
+        id         : 'YWRlbnZ0QGdtYWlsLmNvbQ',
         name       : 'Ade Novid',
         displayName: 'Ade Novid',
       },
       attestation           : 'direct',
       pubKeyCredParams      : [{ type: 'public-key', alg: -7 }, { type: 'public-key', alg: -257 }],
-      authenticatorSelection: { authenticatorAttachment: 'cross-platform' },
       timeout               : 60000,
+      authenticatorSelection: {
+        authenticatorAttachment: 'cross-platform',
+        userVerification       : 'discouraged',
+      },
+    }
+
+    expect(challengeResponse).toStrictEqual(expectedResponse)
+  })
+
+  test('Can generate Regiter Challenge with User Verification true', () => {
+    const webauthn          = new WebAuthn({ rpOrigin: 'https://webauthn.io', userVerification: true })
+    const challengeResponse = webauthn.newRegister({ user: { id: 'adenvt@gmail.com', name: 'Ade Novid' } })
+    const expectedResponse  = {
+      challenge: 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
+      rp       : { id: 'webauthn.io', name: 'webauthn.io' },
+      user     : {
+        id         : 'YWRlbnZ0QGdtYWlsLmNvbQ',
+        name       : 'Ade Novid',
+        displayName: 'Ade Novid',
+      },
+      attestation           : 'direct',
+      pubKeyCredParams      : [{ type: 'public-key', alg: -7 }, { type: 'public-key', alg: -257 }],
+      timeout               : 60000,
+      authenticatorSelection: {
+        authenticatorAttachment: 'cross-platform',
+        userVerification       : 'required',
+      },
     }
 
     expect(challengeResponse).toStrictEqual(expectedResponse)
@@ -206,6 +248,15 @@ describe('Process Register', () => {
       webauthn.processRegister(loginResponse, challenge)
     }).toThrowError('Request body is not valid webauthn registration request')
   })
+
+  test('Throw error when UV required but flasg not true', () => {
+    expect(() => {
+      const webauthn  = new WebAuthn({ rpOrigin: 'https://webauthn.io', userVerification: true })
+      const challenge = '7LhOEoxKASIyXaOY7_cGDxnE3PDD4pB4elK7PVh9s2Q'
+
+      webauthn.processRegister(registerResponse, challenge)
+    }).toThrowError('User Verification flags must be set true')
+  })
 })
 
 describe('Create Login Challenge', () => {
@@ -213,7 +264,7 @@ describe('Create Login Challenge', () => {
     const webauthn          = new WebAuthn({ rpOrigin: 'https://webauthn.io' })
     const challengeResponse = webauthn.newLogin()
     const expectedResponse  = {
-      challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+      challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
       userVerification: 'discouraged',
       timeout         : 60000,
     }
@@ -225,7 +276,7 @@ describe('Create Login Challenge', () => {
     const webauthn          = new WebAuthn({ rpOrigin: 'https://webauthn.io' })
     const challengeResponse = webauthn.newLogin('abcdefh')
     const expectedResponse  = {
-      challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+      challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
       userVerification: 'discouraged',
       allowCredentials: [
         {
@@ -249,7 +300,7 @@ describe('Create Login Challenge', () => {
     const webauthn          = new WebAuthn({ rpOrigin: 'https://webauthn.io' })
     const challengeResponse = webauthn.newLogin(['abcdefh', 'qwerty'])
     const expectedResponse  = {
-      challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+      challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
       userVerification: 'discouraged',
       allowCredentials: [
         {
@@ -290,7 +341,7 @@ describe('Create Login Challenge', () => {
     const webauthn          = new WebAuthn({ rpOrigin: 'https://webauthn.io' })
     const challengeResponse = webauthn.newLogin(userPubKey)
     const expectedResponse  = {
-      challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+      challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
       userVerification: 'discouraged',
       allowCredentials: [
         {
@@ -322,7 +373,7 @@ describe('Create Login Challenge', () => {
     const webauthn              = new WebAuthn({ rpOrigin: 'https://webauthn.io' })
     const challengeResponse     = webauthn.newLogin(userPubKey, options)
     const expectedResponse      = {
-      challenge       : 'YWFhYWE=',
+      challenge       : 'YWFhYWE',
       userVerification: 'discouraged',
       allowCredentials: [
         {
@@ -332,6 +383,18 @@ describe('Create Login Challenge', () => {
         },
       ],
       timeout: 60000,
+    }
+
+    expect(challengeResponse).toStrictEqual(expectedResponse)
+  })
+
+  test('Generate challenge with User Verification true', () => {
+    const webauthn          = new WebAuthn({ rpOrigin: 'https://webauthn.io', userVerification: true })
+    const challengeResponse = webauthn.newLogin()
+    const expectedResponse  = {
+      challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
+      userVerification: 'required',
+      timeout         : 60000,
     }
 
     expect(challengeResponse).toStrictEqual(expectedResponse)
@@ -435,5 +498,26 @@ describe('Process Login', () => {
 
       webauthn.processLogin(registerResponse, challenge, credential)
     }).toThrowError('Request body is not valid webauthn login request')
+  })
+
+  test('Throw error when User Verification required but flags.uv not true', () => {
+    expect(() => {
+      const credential: UserPubKey = {
+        counter     : 0,
+        credentialId: 'vZMrqL__-tEDzaXG5tbVFU5JoxtMt6AnPs_OcaZoWM8',
+        fmt         : 'fido-u2f',
+        publicKey   : [
+          '-----BEGIN PUBLIC KEY-----',
+          'MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEAUEWkmz5r7rVHhypZS6zepJKCYud',
+          'Kj3+MEkMvg7ud9Y8Vd7g1HNPVoLBr4Nu6eXzhiEcbVIIKZCuvNcd3xJ+uA==',
+          '-----END PUBLIC KEY-----',
+        ].join('\n'),
+      }
+
+      const webauthn  = new WebAuthn({ rpOrigin: 'https://webauthn.io', userVerification: true })
+      const challenge = 'fgqnwaiAcwNtHB48dSdU__sk7VNSo41fkPHGuM-W_pI'
+
+      webauthn.processLogin(loginResponse, challenge, credential)
+    }).toThrowError('User Verification flags must be set true')
   })
 })

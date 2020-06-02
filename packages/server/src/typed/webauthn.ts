@@ -15,6 +15,7 @@ export interface RegistrationOptions {
   attestation?: AttestationConveyancePreference;
   authenticator?: AuthenticatorAttachment;
   challengeSize?: number;
+  userVerification?: UserVerificationRequirement;
 }
 
 export interface RegistrationChallenge {
@@ -31,6 +32,7 @@ export interface LoginOptions {
   rp?: RpEntity;
   challengeSize?: number;
   allowTransports?: AuthenticatorTransport[];
+  userVerification?: UserVerificationRequirement;
 }
 
 export interface PublicKeyCredentialDescriptor {
@@ -87,6 +89,7 @@ export interface WebAuthnOption {
   authenticator?: AuthenticatorAttachment;
   challengeSize?: number;
   allowTransports?: AuthenticatorTransport[];
+  userVerification?: boolean | UserVerificationRequirement;
 }
 
 export interface UserChallenge extends UserEntity {

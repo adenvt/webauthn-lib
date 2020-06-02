@@ -38,6 +38,6 @@ export default function generateLoginChallenge (credentialIds?: CredentialIds, o
     challenge       : createChallenge(options?.challengeSize ?? 32),
     timeout         : 60000,
     allowCredentials: allowCredentials,
-    userVerification: 'discouraged',
+    userVerification: options?.userVerification ?? 'discouraged',
   })
 }

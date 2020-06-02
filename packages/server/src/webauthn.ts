@@ -29,7 +29,8 @@ import {
 } from './typed/webauthn'
 
 export default class Webauthn {
-  protected rp: RpEntity;
+  protected rp: RpEntity
+  protected uv: UserVerificationRequirement
   protected config: WebAuthnOption
 
   constructor (options: WebAuthnOption) {
@@ -41,11 +42,21 @@ export default class Webauthn {
 
     const url = new URL(options.rpOrigin)
 
+    this.uv     = 'discouraged'
     this.config = options
     this.rp     = {
       id  : url.hostname,
       name: options.rpName ?? url.hostname,
       icon: options.rpIcon,
+    }
+
+    if (options.userVerification) {
+      if (options.userVerification === true)
+        this.uv = 'required'
+
+      // eslint-disable-next-line array-bracket-newline, array-element-newline
+      else if (['discouraged', 'preferred', 'required'].includes(options.userVerification))
+        this.uv = options.userVerification
     }
   }
 
@@ -103,7 +114,8 @@ export default class Webauthn {
      * If user verification is required for this registration,
      * verify that the User Verified bit of the flags in authData is set.
      */
-    // TODO: Add "User Verified" support
+    if (this.uv === 'required' && !authData.flags.UV)
+      throw new Error('User Verification flags must be set true')
 
     /**
      * Verify that the "alg" parameter in the credential public key in authData
@@ -138,11 +150,12 @@ export default class Webauthn {
       throw new Error('Invalid options, options.user is required')
 
     return generateRegistrationChallenge({
-      user         : options.user,
-      rp           : options.rp ?? this.rp,
-      attestation  : options.attestation ?? this.config.attestation,
-      authenticator: options.authenticator ?? this.config.authenticator,
-      challengeSize: options.challengeSize ?? this.config.challengeSize,
+      user            : options.user,
+      rp              : options.rp ?? this.rp,
+      attestation     : options.attestation ?? this.config.attestation,
+      authenticator   : options.authenticator ?? this.config.authenticator,
+      challengeSize   : options.challengeSize ?? this.config.challengeSize,
+      userVerification: this.uv,
     })
   }
 
@@ -195,7 +208,7 @@ export default class Webauthn {
    * @param options options
    */
   public newLogin (credentialIds?: CredentialIds, options?: LoginOptions): LoginChallenge {
-    return generateLoginChallenge(credentialIds, options)
+    return generateLoginChallenge(credentialIds, { ...options, userVerification: this.uv })
   }
 
   public processLogin (body: any, challenge: string, credential: UserPubKey | UserPubKey[]): UserPubKey {

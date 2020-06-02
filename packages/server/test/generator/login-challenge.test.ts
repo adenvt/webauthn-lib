@@ -1,21 +1,12 @@
 import generateLoginChallenge from '../../src/generator/login-challenge'
 import { UserPubKey, LoginOptions } from '../../src/typed/webauthn'
 
-jest.mock('../../src/utils/crypto', () => {
-  const originalModule = jest.requireActual('../../src/utils/crypto')
-
-  return {
-    ...originalModule,
-    createChallenge: jest.fn().mockImplementation((size = 32) => {
-      return Buffer.alloc(size, 'a').toString('base64')
-    }),
-  }
-})
+jest.mock('../../src/utils/crypto')
 
 test('Generate challenge without parameter', () => {
   const challengeResponse = generateLoginChallenge()
   const expectedResponse  = {
-    challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+    challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
     userVerification: 'discouraged',
     timeout         : 60000,
   }
@@ -26,7 +17,7 @@ test('Generate challenge without parameter', () => {
 test('Generate challenge with string parameter', () => {
   const challengeResponse = generateLoginChallenge('abcdefh')
   const expectedResponse  = {
-    challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+    challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
     userVerification: 'discouraged',
     allowCredentials: [
       {
@@ -49,7 +40,7 @@ test('Generate challenge with string parameter', () => {
 test('Generate challenge with array of string parameter', () => {
   const challengeResponse = generateLoginChallenge(['abcdefh', 'qwerty'])
   const expectedResponse  = {
-    challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+    challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
     userVerification: 'discouraged',
     allowCredentials: [
       {
@@ -89,7 +80,7 @@ test('Generate challenge with UserPubKey parameter', () => {
 
   const challengeResponse = generateLoginChallenge(userPubKey)
   const expectedResponse  = {
-    challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+    challenge       : 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
     userVerification: 'discouraged',
     allowCredentials: [
       {
@@ -120,7 +111,7 @@ test('Generate challenge with option parameter', () => {
   const options: LoginOptions = { allowTransports: ['internal'], challengeSize: 5 }
   const challengeResponse     = generateLoginChallenge(userPubKey, options)
   const expectedResponse      = {
-    challenge       : 'YWFhYWE=',
+    challenge       : 'YWFhYWE',
     userVerification: 'discouraged',
     allowCredentials: [
       {

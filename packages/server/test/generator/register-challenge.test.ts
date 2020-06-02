@@ -1,15 +1,6 @@
 import generateRegistrationChallenge from '../../src/generator/register-challenge'
 
-jest.mock('../../src/utils/crypto', () => {
-  const originalModule = jest.requireActual('../../src/utils/crypto')
-
-  return {
-    ...originalModule,
-    createChallenge: jest.fn().mockImplementation((size = 32) => {
-      return Buffer.alloc(size, 'a').toString('base64')
-    }),
-  }
-})
+jest.mock('../../src/utils/crypto')
 
 describe('Generate Registration Challenge', () => {
   test('Generate Registration Challenge', () => {
@@ -19,17 +10,20 @@ describe('Generate Registration Challenge', () => {
     })
 
     const expectedResponse = {
-      challenge: 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+      challenge: 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
       rp       : { id: 'localhost', name: 'Ade Corporate' },
       user     : {
-        id         : 'YWRlbnZ0QGdtYWlsLmNvbQ==',
+        id         : 'YWRlbnZ0QGdtYWlsLmNvbQ',
         name       : 'Ade Novid',
         displayName: 'Ade Novid',
       },
       attestation           : 'direct',
       pubKeyCredParams      : [{ type: 'public-key', alg: -7 }, { type: 'public-key', alg: -257 }],
-      authenticatorSelection: { authenticatorAttachment: 'cross-platform' },
       timeout               : 60000,
+      authenticatorSelection: {
+        authenticatorAttachment: 'cross-platform',
+        userVerification       : 'discouraged',
+      },
     }
 
     expect(challengeResponse).toStrictEqual(expectedResponse)
@@ -44,17 +38,20 @@ describe('Generate Registration Challenge', () => {
     })
 
     const expectedResponse = {
-      challenge: 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE=',
+      challenge: 'YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE',
       rp       : { id: 'localhost', name: 'Ade Corporate' },
       user     : {
-        id         : 'YWRlbnZ0QGdtYWlsLmNvbQ==',
+        id         : 'YWRlbnZ0QGdtYWlsLmNvbQ',
         name       : 'Ade Novid',
         displayName: 'Ade Novid',
       },
       attestation           : 'none',
       pubKeyCredParams      : [{ type: 'public-key', alg: -7 }, { type: 'public-key', alg: -257 }],
-      authenticatorSelection: { authenticatorAttachment: 'platform' },
       timeout               : 60000,
+      authenticatorSelection: {
+        authenticatorAttachment: 'platform',
+        userVerification       : 'discouraged',
+      },
     }
 
     expect(challengeResponse).toStrictEqual(expectedResponse)
