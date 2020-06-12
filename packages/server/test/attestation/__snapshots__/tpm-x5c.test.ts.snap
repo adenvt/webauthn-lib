@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Verify TPM (X5C) 1`] = `
+Object {
+  "counter": 0,
+  "credentialId": "hWzdFiPbOMQ5KNBsMhs-Zeh8F0iTHrH63YKkrxJFgjQ",
+  "fmt": "none",
+  "publicKey": "-----BEGIN RSA PUBLIC KEY-----
+MIIBCgKCAQEAxdpvTZNXveIC9cVYzQoxVtJU8uCtmrV5MfmCa3R94axPKdYHCHTc
+5XkQ4ZhESZ2OQkcDObFw0CK1AauI6cL07TAuRxnHDevohCQD7ZvfwicwphobcPYW
+xfG3AMrPeEYTfcSy1Gmo4VqrT62GVwhAItKPRNkHUyMSa3AHyYGTn99yTK9PvkdQ
+QEMaTqBkQwvLLPrX0Fvbn2S1sOCVLs+GeSc9bG36gWAfFFAzFqE9B4LDGj5r3e09
+e8Rrwfqb7w3/g7ferxRrWCxGRIIaPGLtuqa+QivwTkPtr1/TeDCGFT1zYaIDBhpi
+mKsm4TN8ocntBnQaWQVHeYjnIDBOrhidfwIDAQAB
+-----END RSA PUBLIC KEY-----",
+}
+`;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webauthn Lib Example</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div class="p-3" id="app">
+    <h1>
+      Webauthn Demo
+    </h1>
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username">
+
+    <div class="mt-3">
+      <button onclick="doRegister()">
+        Register
+      </button>
+
+      <button onclick="doLogin()">
+        Login
+      </button>
+    </div>
+
+    <div id="credential" class="hide">
+      <h4>Credential Id</h4>
+      <pre id="cred-id"></pre>
+
+      <h4>Public Key:</h4>
+      <pre id="pub-key"></pre>
+    </div>
+  </div>
+
+  <script src="/lib/webauthn-client.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>

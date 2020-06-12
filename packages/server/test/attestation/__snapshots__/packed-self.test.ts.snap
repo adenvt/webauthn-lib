@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Verify Packed (Self) 1`] = `
+Object {
+  "counter": 1588518702,
+  "credentialId": "AVy8L1mh_mYMfCGXswa7i-_315bodaSU6zg2PgjtVi0PSTRFjYb2LeCKDJgBmowrp9gFh2U8Jr8",
+  "fmt": "packed",
+  "publicKey": "-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEz0WYd0ZW3WzseKb5FpX9KsFFa26h
+8ESuUGKNgkqzrOxkGU6UGwquODUd2gmgYmxi0/WWYmu0bF6zPWi2TIrLLQ==
+-----END PUBLIC KEY-----",
+}
+`;

@@ -1,0 +1,31 @@
+language: node_js
+node_js:
+  - node
+  - lts/*
+  - 14
+  - 12
+  - 10
+install:
+  - npm ci
+  - npm run bootstrap
+script:
+  - npm run lint
+  - npm test
+jobs:
+  include:
+    - stage: coverage
+      node_js: node
+      script:
+        - jest --coverage
+        - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+        - rm -rf ./coverage
+    - stage: deploy
+      node_js: node
+      script: skip
+      before_deploy:
+        - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
+      deploy:
+        provider: script
+        script: "npm run lerna:publish"
+        skip_cleanup: true
+      if: tag IS present

@@ -1,0 +1,9 @@
+{
+  "id": "Y4s-fgVIXbT7NqvHa1sLMd7T7ErhZn_qF4wa2Yc-Uj4",
+  "rawId": "Y4s-fgVIXbT7NqvHa1sLMd7T7ErhZn_qF4wa2Yc-Uj4",
+  "type": "public-key",
+  "response": {
+    "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YVikdKbqkhPJnC90siSSsyDPQCYqlMGpUKA5fyklC2CEHvBBAAAAAQECAwQFBgcIAQIDBAUGBwgAIGOLPn4FSF20-zarx2tbCzHe0-xK4WZ_6heMGtmHPlI-pQECAyYgASFYIK7SQJhMX-Ctti8ARta6_xzZ7yJG1fWxhs6LjUs0RW0CIlggKQhoZbDaeo85L44FVDSHc2JnlBIgJe6r7K_MaNOjTPA",
+    "clientDataJSON": "eyJjaGFsbGVuZ2UiOiJ5T1RqbVNzWWRHU0ltOXZ3bmN2eXdldVhRQm04dkQ5MVBWNy0xZ2E1bXZNIiwib3JpZ2luIjoiaHR0cHM6Ly93ZWJhdXRobi5pbyIsInR5cGUiOiJ3ZWJhdXRobi5jcmVhdGUifQ"
+  }
+}
