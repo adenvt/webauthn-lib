@@ -27,13 +27,8 @@ export default {
   ],
   plugins: [
     typescript({ tsconfig: path.resolve(__dirname, './tsconfig.json') }),
-    // globals(),
-    // auto(),
     resolve(),
-    cjs({
-      include     : /node_modules/,
-      namedExports: { 'node_modules/js-base64/base64.js': ['Base64'] },
-    }),
+    cjs({ include: /node_modules/ }),
     babel({
       babelHelpers      : 'runtime',
       skipPreflightCheck: true,
