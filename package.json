@@ -38,7 +38,8 @@
     "build": "lerna run build",
     "test": "jest",
     "lint": "eslint --ext js,ts --ignore-path .gitignore .",
-    "fix": "eslint --ext js,ts --ignore-path .gitignore . --fix"
+    "fix": "eslint --ext js,ts --ignore-path .gitignore . --fix",
+    "lerna:publish": "lerna publish from-git --yes"
   },
   "husky": {
     "hooks": {
