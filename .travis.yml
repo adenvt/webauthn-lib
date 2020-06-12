@@ -28,4 +28,6 @@ jobs:
         provider: script
         script: "npm run lerna:publish"
         skip_cleanup: true
+        on:
+          tags: true
       if: tag IS present

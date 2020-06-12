@@ -7,7 +7,7 @@
 
 ## Documentation
 
-You can read full documentation [here](/docs).
+You can read full documentation [here](https://adenov.id/webauthn-lib/).
 
 ## Install in local
 

@@ -21,7 +21,7 @@ npm install @webauthn-lib/client
 npm install @webauthn-lib/server
 ```
 ## Example
-TODO: Example project
+See an example in [example/](https://github.com/adenvt/webauthn-lib/tree/master/example)
 
 ## Usage
 This library contains 2 packages, for [Server-side](#server-side) and [Client-side](#client-side)
