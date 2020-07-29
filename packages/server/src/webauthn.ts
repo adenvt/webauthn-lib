@@ -46,7 +46,7 @@ export default class Webauthn {
     this.config = options
     this.rp     = {
       id  : url.hostname,
-      name: options.rpName ?? url.hostname,
+      name: options.rpName || url.hostname,
       icon: options.rpIcon,
     }
 
