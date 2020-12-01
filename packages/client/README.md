@@ -1,6 +1,6 @@
 # @webauthn-lib/client
 
-> Webauthn server library for [@webauthn-lib/server](https://www.npmjs.com/package/@webauthn-lib/server)
+> Webauthn client library for [@webauthn-lib/client](https://www.npmjs.com/package/@webauthn-lib/client)
 
 ## Documentation
 

@@ -14,7 +14,7 @@
   "main": "dist/client.js",
   "module": "dist/client.es.js",
   "types": "dist/client.d.ts",
-  "browser": "dist/client.min.js",
+  "unpkg": "dist/client.min.js",
   "files": [
     "dist"
   ],
