@@ -50,5 +50,6 @@
     "*.(js|ts)": [
       "eslint --fix"
     ]
-  }
+  },
+  "dependencies": {}
 }
