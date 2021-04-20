@@ -19,7 +19,7 @@ export default {
     },
     {
       name   : 'Webauthn',
-      file   : package_.browser,
+      file   : package_.unpkg,
       format : 'iife',
       exports: 'default',
       plugins: [terser()],

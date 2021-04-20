@@ -1,11 +1,7 @@
 # @webauthn-lib/server
 
-> TODO: description
+> Webauthn server library for Node JS
 
-## Usage
+## Documentation
 
-```
-const client = require('@webauthn-lib/server');
-
-// TODO: DEMONSTRATE API
-```
+You can read full documentation [here](https://adenov.id/webauthn-lib/).

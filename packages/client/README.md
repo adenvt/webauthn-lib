@@ -1,11 +1,8 @@
 # @webauthn-lib/client
 
-> TODO: description
+> Webauthn client library for [@webauthn-lib/client](https://www.npmjs.com/package/@webauthn-lib/client)
 
-## Usage
+## Documentation
 
-```
-const client = require('@webauthn-lib/client');
-
-// TODO: DEMONSTRATE API
+You can read full documentation [here](https://adenov.id/webauthn-lib/).
 ```
