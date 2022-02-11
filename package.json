@@ -24,7 +24,7 @@
     "eslint-plugin-unicorn": "19.0.1",
     "eslint-plugin-varspacing": "1.2.2",
     "eslint-plugin-vue": "6.2.2",
-    "husky": "4.2.5",
+    "husky": "4.3.7",
     "jest": "26.0.1",
     "jest-progress-bar-reporter": "1.0.16",
     "lerna": "3.21.0",
