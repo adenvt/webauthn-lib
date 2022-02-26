@@ -51,7 +51,7 @@
     "rasha": "^1.2.5"
   },
   "devDependencies": {
-    "@babel/cli": "7.13.16",
-    "@babel/core": "7.10.1"
+    "@babel/cli": "7.17.6",
+    "@babel/core": "7.17.5"
   }
 }
