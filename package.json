@@ -31,7 +31,7 @@
     "lint-staged": "10.2.2",
     "typedoc": "0.21.10",
     "typescript": "3.9.10",
-    "webpack": "4.43.0"
+    "webpack": "4.46.0"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap --hoist",
