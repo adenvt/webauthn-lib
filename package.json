@@ -26,7 +26,7 @@
     "eslint-plugin-vue": "6.2.2",
     "husky": "7.0.4",
     "jest": "26.6.3",
-    "jest-progress-bar-reporter": "1.0.21",
+    "jest-progress-bar-reporter": "1.0.25",
     "lerna": "4.0.0",
     "lint-staged": "10.5.4",
     "typedoc": "0.21.10",
