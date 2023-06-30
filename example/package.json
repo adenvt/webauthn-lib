@@ -34,6 +34,6 @@
     "express-session": "1.17.2"
   },
   "devDependencies": {
-    "nodemon": "2.0.15"
+    "nodemon": "2.0.22"
   }
 }
