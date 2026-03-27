@@ -6,7 +6,7 @@
     "@babel/preset-env": "7.16.11",
     "@babel/preset-typescript": "7.16.7",
     "@types/cbor": "5.0.1",
-    "@types/is-url": "1.2.30",
+    "@types/is-url": "1.2.32",
     "@types/jest": "25.2.3",
     "@types/node": "16.11.26",
     "@typescript-eslint/eslint-plugin": "2.33.0",
